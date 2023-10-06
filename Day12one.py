@@ -12,9 +12,9 @@ def cached(fun):
 
             print("**"*50)
 
-            print("alredy in the cache")
+            print(f'factorial of {x} alredy in the cache')
 
-            print(fact_dict.keys())
+            print(fact_dict[x])
 
             return fact_dict[x]
 
@@ -25,6 +25,8 @@ def cached(fun):
             print("not in the cache")
 
             result = fun(x)
+
+            print(result)
 
             fact_dict[x] = result
 
@@ -44,9 +46,11 @@ def performance_log(fun):
 
         end = time.time()
 
-        print(result)
+        print(f'factorial of {num}: {result}')
 
         print(f'this {fun.__name__} takes {end-start} sec')
+
+        return result
 
     return inner
 
@@ -66,16 +70,11 @@ def factorial(x):
 
     return fact
 
- 
-
 for i in range(1,5):
 
     factorial(i)
 
 factorial(4)
 
- 
-
- 
-
 #cached(performane_log(cached))
+
